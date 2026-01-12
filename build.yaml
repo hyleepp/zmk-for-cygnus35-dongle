@@ -1,34 +1,32 @@
 # Modified config/build.yaml
-# 解决 Invalid BOARD 错误：将 ItsyBitsy 伪装成 nice_nano_v2 编译
+# 修复: 根据日志列表，将板子名称从 nice_nano_v2 改为 nice_nano
 
 include:
   # ---------------------------------------------------------
   # 1. 接收器 Dongle (实际硬件: Adafruit ItsyBitsy nRF52840)
   # ---------------------------------------------------------
-  # 修改说明：
-  # 由于 ZMK 默认不包含 ItsyBitsy 的板子定义，我们使用 nice_nano_v2 代替。
-  # 它们芯片相同，作为 Dongle 使用时完全兼容。
-  - board: nice_nano_v2
+  # 使用 nice_nano 代替 nice_nano_v2
+  - board: nice_nano
     shield: cygnus35_dongle
     snippet: studio-rpc-usb-uart
     cmake-args: -DCONFIG_ZMK_STUDIO=y -DCONFIG_ZMK_STUDIO_LOCKING=n
     artifact-name: cygnus35_dongle_itsybitsy_compatible
 
   # ---------------------------------------------------------
-  # 2. 左右手键盘 (Nice!Nano v2)
+  # 2. 左右手键盘 (Nice!Nano)
   # ---------------------------------------------------------
-  - board: nice_nano_v2
+  # 使用 nice_nano 代替 nice_nano_v2
+  - board: nice_nano
     shield: cygnus35_ph_left
     artifact-name: cygnus35_ph_left
 
-  - board: nice_nano_v2
+  - board: nice_nano
     shield: cygnus35_right
     artifact-name: cygnus35_right
 
   # ---------------------------------------------------------
   # 3. 设置重置工具 (Settings Reset)
   # ---------------------------------------------------------
-  # 同样，使用 nice_nano_v2 的重置固件通刷所有 nRF52840 板子
-  - board: nice_nano_v2
+  - board: nice_nano
     shield: settings_reset
     artifact-name: settings_reset_universal
